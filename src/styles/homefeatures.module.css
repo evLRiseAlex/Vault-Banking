@@ -1,0 +1,17 @@
+.titleContainer {
+padding-left: 10vw;
+    padding-bottom: 40px;
+}
+
+.featuresContainer {
+    padding-top: 160px;
+    padding-bottom: 160px;
+    padding-left: 50px;
+    padding-right: 50px;
+    transition: transform 1s, opacity 1s;
+}
+
+.featuresHidden {
+    opacity: 0;
+    transform: translateY(8rem);
+}

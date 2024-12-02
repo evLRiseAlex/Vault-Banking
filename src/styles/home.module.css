@@ -1,0 +1,34 @@
+.homeText {
+    max-width: 40vw;
+}
+
+.container {
+display: flex;
+flex-direction: row;
+gap: 50px;
+flex-wrap: wrap;
+justify-content: space-evenly;
+padding-left: 50px;
+padding-right: 50px;
+align-items: center;
+height: 100vh;
+padding-top: 144px;
+}
+
+.btnScrollTo {
+display: inline-block;
+background: none;
+font-size: 26px;
+font-family: inherit;
+font-weight: 500;
+color: rgb(169, 106, 199);
+border: none;
+border-bottom: 1px solid currentColor;
+padding-bottom: 2px;
+cursor: pointer;
+transition: all 0.3s;
+}
+
+.headerMargin {
+    /* padding-top: 200px; */
+}

@@ -1,0 +1,28 @@
+.navContainer {
+    /* position: relative; */
+    display: flex;
+    align-items: center;
+
+}
+
+.navLinks {
+    display: flex;
+    list-style-type: none;
+    gap: 60px;
+}
+
+.navLink {
+    text-decoration: none;
+    color: var(--color-primary--dark)
+}
+
+@media (max-width: 768px) {
+.navLinks {
+    flex-direction: column;
+    list-style-type: circle;
+    gap: 12px;
+    font-size: 20px;
+    padding: 10px;
+    /* transition: background-color 0.6s ease; */
+    }
+}

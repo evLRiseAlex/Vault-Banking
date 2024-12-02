@@ -1,0 +1,40 @@
+.contactContainer {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    flex-direction: column;
+    gap: 60px;
+padding-top: 200px;
+padding-left: 300px;
+padding-right: 300px;
+padding-bottom: 100px;
+}
+
+.mapContainer {
+    border: 2px solid #c9c9c9;
+    border-radius: 20px;
+    box-shadow: 0 0 20px var(--color-primary--dark);
+    margin-bottom: 40px;
+    align-self: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.dataContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px;
+
+}
+
+.helpContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 2px solid #c9c9c9;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #c9c9c9;
+}
