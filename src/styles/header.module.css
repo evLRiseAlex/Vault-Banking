@@ -11,7 +11,8 @@
     left: 0;
     right: 0;
     z-index: 1000;
-    padding: 40px 40px;
+    padding: 40px;
+    width: 100vw;
 }
 
 .scrolled {
@@ -61,15 +62,25 @@
     gap: 40px;
 }
 
+@media (max-width: 1100px) {
+    .header {
+        padding: 32px;
+    }
+}
+
 @media (max-width: 768px) {
     .hamburger {
         display: flex;
     }
 
+    .header {
+        padding: 24px;
+    }
+
     .navLinksContainer {
         visibility: hidden;
         position: absolute;
-        top: 133px;
+        top: 91px;
         left: 0;
         opacity: 0;
         padding: 20px;

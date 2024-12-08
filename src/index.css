@@ -1,13 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Quicksand:wght@300..700&family=Teko:wght@300..700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&family=Teko:wght@300..700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-
 :root {
+  --card-background: url("/card-bg_black.png");
+  --text-opacity: 1;
+
+  --text-shadow: 0 0 5px rgba(201, 153, 255, 0.5);
+
+  --button-box-shadow: 0 0 20px rgba(201, 153, 255, 0.5);
+  --button-color-fill: rgba(116, 61, 139, 0.705);
+
   --color-primary--dark: #c9c9c9;
   --color-secondary--dark: rgb(1, 0, 26);
   --color-secondary--dark--alpha: rgba(1, 0, 26, 0.9);
   --color-primary-opaque--dark: #c9c9c9bd;
-  --gradient-primary--dark: linear-gradient(177deg, rgb(1, 0, 26) 0%, rgb(47, 0, 100), rgb(0, 42, 53) 82%);
+  --gradient-primary--dark: linear-gradient(
+    177deg,
+    rgb(1, 0, 26) 0%,
+    rgb(47, 0, 100),
+    rgb(0, 42, 53) 82%
+  );
+
+  --heading-size-1: 32px;
+  --heading-line-1: 1.5;
+  --heading-weight-1: 700;
+  --heading-size-2: 20px;
+  --heading-line-2: 1.5;
+  --heading-weight-2: 700;
+
+  --text-size-1: 20px;
+  --text-line-1: 1.5;
+  --text-weight-1: 400;
+  --text-size-2: 16px;
+  --text-line-2: 1.5;
+  --text-weight-2: 400;
 }
 
 * {
@@ -16,19 +39,26 @@
   box-sizing: inherit;
 }
 
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+  /* Ensures no horizontal scrollbars due to overflow */
+}
+
+body {
+  min-width: 100vw;
+  /* Ensures the body does not shrink below viewport width */
+  background-image: var(--gradient-primary--dark);
+  background-size: cover;
+  font-family: "Teko", sans-serif;
+  color: var(--color-primary--dark);
+}
+
 html {
   box-sizing: border-box;
 }
 
-body {
-  
-  background-image: var(--gradient-primary--dark);
-  background-size: cover;
-  height: 100%;
-  font-family: "Teko", sans-serif;
-  font-size: 1.6rem;
-  color: var(--color-primary--dark);
-}
 
 /*/////////////////////////////////////////*/
 /*/////////////////////////////////////////*/
@@ -56,92 +86,4 @@ body {
   right: 0;
   /* Stretch across full width */
   z-index: 1000;
-
 }
-
-.logo {
-  width: 10rem;
-}
-
-.logo:focus {
-    box-shadow: 0 0 20px rgba(200, 153, 255, 0.616);
-}
-
-.flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav {
-  height: 9rem;
-  width: 100%;
-  padding: 0 1rem;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-}
-
-
-.nav__links {
-  display: flex;
-  align-items: center;
-  list-style: none;
-}
-
-.nav__item {
-  margin-left: 4rem;
-}
-
-.nav__link:link,
-.nav__link:visited {
-  font-size: 1.7rem;
-  font-weight: 400;
-  color: inherit;
-  text-decoration: none;
-
-  transition: all 0.3s;
-}
-
-
-/*/////////////////////////////////////////*/
-/*/////////////////////////////////////////*/
-/*/////////////////////////////////////////*/
-/* BUTTONS */
-/*/////////////////////////////////////////*/
-/*/////////////////////////////////////////*/
-/*/////////////////////////////////////////*/
-
-.button {
-  background-color: transparent;
-  /* Button background color */
-  color: white;
-  font-family: inherit;
-  font-size: 1.6rem;
-  padding: 6px 24px;
-  border: 2px solid var(--color-primary--dark);
-  /* White border to stand out */
-  border-radius: 8px;
-  cursor: pointer;
-  transition: opacity 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease-in-out;
-  /* Simple transition */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Hover effect */
-.button:hover {
-  opacity: 0.7;
-  /* Reduce opacity of the button on hover */
-  border-color: var(--color-primary-opaque--dark);
-  color: var(--color-primary-opaque--dark);
-  /* Lighter text on hover */
-}
-
-
-.button:focus {
-  outline: none;
-  box-shadow: 0 0 20px rgba(200, 153, 255, 0.616);
-}
-
-
-

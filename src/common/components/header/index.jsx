@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 // import LogoWithText from "./LogoWithText";
+import NavLinks from "./NavLinks";
 import styles from "../styles/header.module.css";
-import { Button, LogoWithText, Nav, Logo } from "../common";
+import { Button, LogoWithText } from "../common";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -52,29 +53,19 @@ const Header = () => {
         <LogoWithText />
 
         {/* Hamburger Menu Button */}
-        <Logo />
+
         {/* NavLinks */}
         <nav
           className={`${styles.navLinksContainer} ${
             isMenuOpen ? styles.open : ""
           }`}
         >
-          <Nav media={true} />
+          <NavLinks />
         </nav>
       </div>
-
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: "40px",
-        }}
-      >
+      <div>
         <Button variant="outline">Log In</Button>
-        <Button variant="fill" display="none">
-          Sign Up
-        </Button>
+        <Button variant="fill">Sign Up</Button>
       </div>
     </header>
   );

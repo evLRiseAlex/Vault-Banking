@@ -1,7 +1,6 @@
 import { ToSQuestions } from "./contants";
-import Question from "./Question";
+import { Question } from "../common";
 import styles from "../styles/tos.module.css";
-import { useState, useEffect } from "react";
 
 function ToS() {
   const ToSList = ToSQuestions.map((entry) => {
