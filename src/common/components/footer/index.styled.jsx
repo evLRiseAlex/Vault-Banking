@@ -7,6 +7,8 @@ export const FooterContainer = styled.div`
   align-items: center;
   justify-content: center;
   padding: 50px;
+  z-index: 100;
+  position: relative;
 
   img {
     width: 50px;

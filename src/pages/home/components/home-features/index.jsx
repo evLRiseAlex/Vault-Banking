@@ -1,6 +1,6 @@
-import { homeFeaturesData } from "./contants";
-import HomeSection from "./HomeSection";
-import styles from "../styles/homefeatures.module.css";
+import { homeFeaturesData } from "../../../../common/index.constants";
+import HomeSection from "../home-section/index";
+import styles from "./index.module.css";
 import { useEffect, useState } from "react";
 
 function HomeFeatures() {

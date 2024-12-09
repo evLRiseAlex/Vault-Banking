@@ -1,13 +1,12 @@
-import styles from "../styles/home.module.css";
-
-import HomeFeatures from "./HomeFeatures";
-import { Card, StylingLine } from "../common";
+import HomeFeatures from "./components/home-features/index";
+import { Card, StylingLine } from "../../common";
+import { MainContainer, ContentContainer, LineContainer } from "./index.styled";
 
 function HomePage() {
   return (
-    <main>
-      <div className={styles.container}>
-        <div className={styles.homeText}>
+    <MainContainer>
+      <ContentContainer>
+        <div className="homeText">
           <h1>Banking Made Easy</h1>
           <p>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem,
@@ -21,20 +20,18 @@ function HomePage() {
                 .querySelector(`#line1`)
                 .scrollIntoView({ behavior: `smooth` });
             }}
-            className={styles.btnScrollTo}
+            className="btnScrollTo"
           >
             Learn more ⬇
           </button>
         </div>
-        <div>
-          <Card />
-        </div>
-      </div>
-      <div id="line1">
+        <Card />
+      </ContentContainer>
+      <LineContainer id="line1">
         <StylingLine />
-      </div>
+      </LineContainer>
       <HomeFeatures />
-    </main>
+    </MainContainer>
   );
 }
 

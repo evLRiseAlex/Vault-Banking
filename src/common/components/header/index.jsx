@@ -1,73 +1,99 @@
 import { useState, useEffect } from "react";
-// import LogoWithText from "./LogoWithText";
-import NavLinks from "./NavLinks";
-import styles from "../styles/header.module.css";
-import { Button, LogoWithText } from "../common";
+import {
+  HeaderContainer,
+  Hamburger,
+  HamburgerLine,
+  NavLinksContainer,
+  NavLeft,
+  ButtonContainer,
+} from "./index.styled";
+import {
+  Button,
+  LogoWithText,
+  Nav,
+  Logo,
+  Modal,
+  Overlay,
+} from "../../../common";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrollTimeout, setScrollTimeout] = useState(null);
+  const [isHiddenSignUp, setIsHiddenSignUp] = useState(true);
+  const [isHiddenLogIn, setIsHiddenLogIn] = useState(true);
 
   useEffect(() => {
-    const headerCoords = document
-      .querySelector("header")
-      .getBoundingClientRect().height;
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        if (!isHiddenSignUp || !isHiddenLogIn) {
+          setIsHiddenSignUp(true);
+          setIsHiddenLogIn(true);
+        }
+      }
+    };
 
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isHiddenSignUp, isHiddenLogIn]);
+
+  useEffect(() => {
     const handleScroll = () => {
-      if (!headerCoords) return;
-      if (scrollTimeout) clearTimeout(scrollTimeout);
-
-      const timeoutId = setTimeout(() => {
-        setIsScrolled(window.scrollY > headerCoords);
-      }, 100);
-      setScrollTimeout(timeoutId);
+      const headerHeight = document.querySelector("header").offsetHeight;
+      setIsScrolled(window.scrollY > headerHeight);
     };
 
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [scrollTimeout]);
+  }, []);
 
   const toggleMenu = () => {
-    setIsMenuOpen((prevState) => !prevState);
+    setIsMenuOpen((prev) => !prev);
   };
 
   return (
-    <header
-      className={`${styles.header} ${
-        isScrolled || isMenuOpen ? styles.scrolled : ""
-      }`}
-    >
-      <div
-        className={`${styles.hamburger} ${isMenuOpen ? styles.open : ""}`}
-        onClick={toggleMenu}
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+    <HeaderContainer isScrolled={isScrolled} isMenuOpen={isMenuOpen}>
+      <Hamburger isMenuOpen={isMenuOpen} onClick={toggleMenu}>
+        <HamburgerLine />
+        <HamburgerLine />
+        <HamburgerLine />
+      </Hamburger>
 
-      <div className={styles.navLeft}>
-        {/* Logo */}
+      <NavLeft>
         <LogoWithText />
-
-        {/* Hamburger Menu Button */}
-
-        {/* NavLinks */}
-        <nav
-          className={`${styles.navLinksContainer} ${
-            isMenuOpen ? styles.open : ""
-          }`}
+        <Logo />
+        <NavLinksContainer isMenuOpen={isMenuOpen}>
+          <Nav media={true} />
+        </NavLinksContainer>
+      </NavLeft>
+      <ButtonContainer>
+        <Button
+          type="button"
+          variant="outline"
+          onClick={() => {
+            setIsHiddenLogIn((prev) => !prev);
+          }}
         >
-          <NavLinks />
-        </nav>
-      </div>
-      <div>
-        <Button variant="outline">Log In</Button>
-        <Button variant="fill">Sign Up</Button>
-      </div>
-    </header>
+          Log In
+        </Button>
+        <Button
+          type="button"
+          variant="fill"
+          display="none"
+          onClick={() => {
+            setIsHiddenSignUp((prev) => !prev);
+          }}
+        >
+          Sign Up
+        </Button>
+      </ButtonContainer>
+      <Modal isHidden={isHiddenLogIn} />
+      <Overlay isHidden={isHiddenLogIn} />
+      <Modal isHidden={isHiddenSignUp} />
+      <Overlay isHidden={isHiddenSignUp} />
+    </HeaderContainer>
   );
 };
 

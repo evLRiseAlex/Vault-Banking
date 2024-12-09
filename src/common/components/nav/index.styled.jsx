@@ -33,6 +33,14 @@ const Container = styled.nav`
     font-weight: var(--text-weight-2);
   }
 
+  @media (max-width: 768px) {
+    ul {
+      font-size: 20px;
+      padding: 10px;
+      gap: 30px;
+    }
+  }
+
   ${({ media }) =>
     media &&
     `
@@ -40,9 +48,6 @@ const Container = styled.nav`
       ul {
         flex-direction: column;
         list-style-type: circle;
-        gap: 12px;
-        font-size: 20px;
-        padding: 10px;
       }
     }
   `}

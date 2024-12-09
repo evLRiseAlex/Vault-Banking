@@ -9,9 +9,15 @@ export const CardWrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     border-radius: 25px;
     padding: 20px;
+  }
+
+  @media (max-width: 900px) {
+    border-radius: 25px;
+    padding: 20px;
+    margin-bottom: 30px;
   }
 
   @media (max-width: 375px) {
@@ -76,7 +82,7 @@ export const CardContainer = styled.div`
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     width: 340px;
     height: 210px;
     border-radius: 14px;
@@ -110,11 +116,11 @@ export const CardContainer = styled.div`
     }
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 500px) {
     width: 250px;
     height: 140px;
     border-radius: 14px;
-    padding: 12px;
+    padding: 10px;
 
     img.logo {
       width: 60px;
@@ -126,7 +132,7 @@ export const CardContainer = styled.div`
 
     h5 {
       &:nth-of-type(1) {
-        font-size: 20px;
+        font-size: 16px;
       }
 
       &:nth-of-type(2) {
@@ -135,10 +141,10 @@ export const CardContainer = styled.div`
     }
 
     div {
-      font-size: 10px;
+      font-size: 8px;
 
       h5 {
-        font-size: 10px;
+        font-size: 8px;
       }
     }
   }

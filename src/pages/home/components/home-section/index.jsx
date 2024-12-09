@@ -1,4 +1,5 @@
-import styles from "../styles/homesection.module.css";
+import styles from "./index.module.css";
+import PropTypes from "prop-types";
 
 function HomeSection({
   imagePath,
@@ -29,11 +30,21 @@ function HomeSection({
         <div className={styles.iconContainer}>
           <img src={iconPath} alt="" className={styles.icon} />
         </div>
-        <h5>{featureTitle}</h5>
-        <p>{featureText}</p>
+        <h5 className={styles.sectionHeader}>{featureTitle}</h5>
+        <p className={styles.sectionParagraph}>{featureText}</p>
       </article>
     </section>
   );
 }
+
+HomeSection.propTypes = {
+  imagePath: PropTypes.string.isRequired,
+  iconPath: PropTypes.string.isRequired,
+  featureTitle: PropTypes.string.isRequired,
+  featureText: PropTypes.string.isRequired,
+  flexDirection: PropTypes.string,
+  isVisible: PropTypes.bool.isRequired,
+  imagePathLowRes: PropTypes.string.isRequired,
+};
 
 export default HomeSection;

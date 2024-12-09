@@ -10,7 +10,6 @@ export const QuestionContainer = styled.li`
   overflow: hidden;
   list-style-type: none;
 
-  /* Ensure content stays inside while animating */
   > div {
     display: flex;
     justify-content: space-between;
@@ -33,13 +32,13 @@ export const QuestionContainer = styled.li`
     &.hidden {
       max-height: 0;
       opacity: 0;
-      padding: 0; /* No padding when hidden */
+      padding: 0;
     }
 
     &.visible {
       max-height: 500px;
       opacity: 1;
-      padding: 12px 0px; /* 10px top and bottom padding when visible */
+      padding: 12px 0px;
     }
   }
 
