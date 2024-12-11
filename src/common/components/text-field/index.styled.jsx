@@ -3,6 +3,7 @@ import styled from "styled-components";
 const Container = styled.div`
   display: flex;
   align-items: center;
+  font-family: "Teko";
   height: 48px;
   border-radius: 8px;
   border: 1px solid
@@ -34,6 +35,7 @@ const Container = styled.div`
       }
       &::placeholder {
         opacity: 0.5s;
+        font-family: "Teko";
       }
     }
   }

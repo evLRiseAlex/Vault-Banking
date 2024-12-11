@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext, useContext } from "react";
 import {
   HeaderContainer,
   Hamburger,
@@ -7,37 +7,33 @@ import {
   NavLeft,
   ButtonContainer,
 } from "./index.styled";
-import {
-  Button,
-  LogoWithText,
-  Nav,
-  Logo,
-  Modal,
-  Overlay,
-} from "../../../common";
+import { Button, LogoWithText, Nav, Logo, Overlay } from "../../../common";
+import { ModalLogIn, ModalSignUp } from "../../../features";
+import { useNavigate, useLocation } from "react-router-dom";
+
+const DialogueContext = createContext();
+
+export const useDialogue = () => {
+  return useContext(DialogueContext);
+};
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isHiddenSignUp, setIsHiddenSignUp] = useState(true);
-  const [isHiddenLogIn, setIsHiddenLogIn] = useState(true);
 
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === "Escape") {
-        if (!isHiddenSignUp || !isHiddenLogIn) {
-          setIsHiddenSignUp(true);
-          setIsHiddenLogIn(true);
-        }
-      }
-    };
+  const navigate = useNavigate();
+  const location = useLocation();
 
-    window.addEventListener("keydown", handleKeyDown);
+  const params = new URLSearchParams(location.search);
+  const dialogueType = params.get("dialogue");
 
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [isHiddenSignUp, isHiddenLogIn]);
+  const openDialogue = (type) => {
+    navigate(`?dialogue=${type}`);
+  };
+
+  const closeDialogue = () => {
+    navigate(location.pathname);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,51 +45,64 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleDialogue = window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeDialogue();
+      return () => window.removeEventListener("keydown", handleDialogue);
+    });
+  }, []);
+
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
 
   return (
-    <HeaderContainer isScrolled={isScrolled} isMenuOpen={isMenuOpen}>
-      <Hamburger isMenuOpen={isMenuOpen} onClick={toggleMenu}>
-        <HamburgerLine />
-        <HamburgerLine />
-        <HamburgerLine />
-      </Hamburger>
+    <DialogueContext.Provider value={{ openDialogue, closeDialogue }}>
+      <HeaderContainer isScrolled={isScrolled} isMenuOpen={isMenuOpen}>
+        <Hamburger isMenuOpen={isMenuOpen} onClick={toggleMenu}>
+          <HamburgerLine />
+          <HamburgerLine />
+          <HamburgerLine />
+        </Hamburger>
 
-      <NavLeft>
-        <LogoWithText />
-        <Logo />
-        <NavLinksContainer isMenuOpen={isMenuOpen}>
-          <Nav media={true} />
-        </NavLinksContainer>
-      </NavLeft>
-      <ButtonContainer>
-        <Button
-          type="button"
-          variant="outline"
-          onClick={() => {
-            setIsHiddenLogIn((prev) => !prev);
-          }}
-        >
-          Log In
-        </Button>
-        <Button
-          type="button"
-          variant="fill"
-          display="none"
-          onClick={() => {
-            setIsHiddenSignUp((prev) => !prev);
-          }}
-        >
-          Sign Up
-        </Button>
-      </ButtonContainer>
-      <Modal isHidden={isHiddenLogIn} />
-      <Overlay isHidden={isHiddenLogIn} />
-      <Modal isHidden={isHiddenSignUp} />
-      <Overlay isHidden={isHiddenSignUp} />
-    </HeaderContainer>
+        <NavLeft>
+          <LogoWithText />
+          <Logo />
+          <NavLinksContainer isMenuOpen={isMenuOpen}>
+            <Nav media={true} />
+          </NavLinksContainer>
+        </NavLeft>
+        <ButtonContainer>
+          <Button
+            type="button"
+            variant="outline"
+            onClick={() => openDialogue("login")}
+          >
+            Log In
+          </Button>
+          <Button
+            type="button"
+            variant="fill"
+            display="none"
+            onClick={() => openDialogue("signup")}
+          >
+            Sign Up
+          </Button>
+        </ButtonContainer>
+        {dialogueType === "login" && (
+          <>
+            <ModalLogIn />
+            <Overlay />
+          </>
+        )}
+        {dialogueType === "signup" && (
+          <>
+            <ModalSignUp />
+            <Overlay />
+          </>
+        )}
+      </HeaderContainer>
+    </DialogueContext.Provider>
   );
 };
 

@@ -7,12 +7,14 @@ const TextField = (props) => {
       <div>
         {props.isIconVisible ? props.iconChildren : null}
         <input
+          id={props.id}
           name={props.name}
           onChange={props.onChange}
           onBlur={props.onBlur}
           onFocus={props.onFocus}
           value={props.value}
           placeholder={props.placeholder}
+          {...props}
         />
         {props.isErrorVisible ? <p>{props.errorChildren}</p> : null}
       </div>
@@ -21,6 +23,7 @@ const TextField = (props) => {
 };
 
 TextField.propTypes = {
+  id: PropTypes.string,
   iconChildren: PropTypes.element,
   isIconVisible: PropTypes.bool,
   errorChildren: PropTypes.element,

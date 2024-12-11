@@ -16,6 +16,12 @@ const Container = styled.div`
     width: 150px;
   }
 
+  .btn__logo {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
   @media (max-width: 1100px) {
     img {
       width: 100px;

@@ -1,14 +1,24 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Container from "./index.styled";
 
-function LogoWithText() {
+function Logo() {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/");
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <Container>
-      <Link to="/">
-        <img src="/vault-dark.png" alt="" />
-      </Link>
+      <button className="btn__logo" onClick={handleClick}>
+        <img src="/vault-dark.png" alt="Logo" />
+      </button>
     </Container>
   );
 }
 
-export default LogoWithText;
+export default Logo;

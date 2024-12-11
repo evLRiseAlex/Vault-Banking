@@ -9,6 +9,11 @@ const Container = styled.div`
   img {
     width: 36px;
   }
+  .btn__logo {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
 
   @media (max-width: 768px) {
     display: flex;

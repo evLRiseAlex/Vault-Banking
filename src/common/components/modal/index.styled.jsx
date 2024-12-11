@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const Container = styled.div`
   position: fixed;
@@ -6,20 +6,28 @@ const Container = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 35vw;
-  height: 65vh;
+  height: auto;
   background-color: var(--color-secondary--dark--alpha);
   border: 2px solid var(--color-primary--dark);
   /* border-radius: 25px; */
-  padding: 5rem 6rem;
+  padding: 20px 20px;
   box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.3);
   z-index: 1002;
+  border-radius: 20px;
   transition: all 0.5s;
-  ${({ isHidden }) =>
-    isHidden &&
-    css`
-      visibility: hidden;
-      opacity: 0;
-    `}
+  display: flex;
+  flex-direction: column;
+
+  .btn__modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    width: 10%;
+    align-self: flex-end;
+    margin-bottom: 10px;
+  }
+
   @media (max-width: 1100px) {
     width: 50vw;
   }
@@ -29,8 +37,7 @@ const Container = styled.div`
   }
 
   @media (max-width: 600px) {
-    width: 70vw;
-    height: 60vh;
+    width: 80vw;
   }
 `;
 
