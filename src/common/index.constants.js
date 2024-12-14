@@ -82,3 +82,13 @@ Vault assumes no responsibility for the privacy practices of these sites, their 
 Vault does not accept any liability for direct or indirect losses resulting from the use of this site and its content, including damage to your computer as a result of accessing or using the server hosting this site.`,
   },
 ];
+
+export const mockAccount = {
+  email: "alex@admin.com",
+  password: "123",
+  movements: [100, 250, 500, -100, -500, -50, 250, 80],
+  locale: navigator.language,
+  firstName: "Alexandru",
+  lastName: "Stefan",
+  currency: "RON",
+};

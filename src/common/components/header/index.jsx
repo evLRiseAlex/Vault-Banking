@@ -9,7 +9,7 @@ import {
 } from "./index.styled";
 import { Button, LogoWithText, Nav, Logo, Overlay } from "../../../common";
 import { ModalLogIn, ModalSignUp } from "../../../features";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router";
 
 const DialogueContext = createContext();
 
@@ -36,13 +36,23 @@ const Header = () => {
   };
 
   useEffect(() => {
+    let debounceTimer;
+
     const handleScroll = () => {
-      const headerHeight = document.querySelector("header").offsetHeight;
-      setIsScrolled(window.scrollY > headerHeight);
+      if (debounceTimer) {
+        clearTimeout(debounceTimer);
+      }
+
+      debounceTimer = setTimeout(() => {
+        setIsScrolled(window.scrollY > 0);
+      }, 100);
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      clearTimeout(debounceTimer);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   useEffect(() => {

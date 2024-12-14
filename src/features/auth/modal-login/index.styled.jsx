@@ -84,9 +84,9 @@ const Container = styled.form`
     }
 
     input::placeholder {
-      font-size: var(--heading-size-2);
-      line-height: var(--heading-line-2);
-      font-weight: var(--heading-weight-2);
+      font-size: var(--text-size-2);
+      line-height: var(--text-line-2);
+      font-weight: var(--text-weight-2);
     }
   }
 `;

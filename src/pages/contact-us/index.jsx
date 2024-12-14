@@ -1,5 +1,5 @@
 // index.jsx
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { Map } from "../../common";
 import {
   ContactContainer,

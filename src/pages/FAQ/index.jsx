@@ -1,5 +1,5 @@
 import { FAQQuestions } from "../../common/index.constants";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { FAQContainer, FAQBox, FAQHelp } from "./index.styled";
 import { Button, Question } from "../../common";
 

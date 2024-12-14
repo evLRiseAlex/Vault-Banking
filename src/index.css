@@ -45,6 +45,7 @@ html,
 body {
   width: 100%;
   overflow-x: hidden;
+  padding-right: calc(100vw - 100%);
   /* Ensures no horizontal scrollbars due to overflow */
 }
 

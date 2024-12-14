@@ -10,6 +10,12 @@ export const FooterContainer = styled.div`
   z-index: 100;
   position: relative;
 
+  @media (max-width: 400px) {
+    a {
+      font-size: var(--text-size-2);
+    }
+  }
+
   img {
     width: 50px;
     margin-top: 25px;
@@ -17,6 +23,12 @@ export const FooterContainer = styled.div`
 
     @media (max-width: 1100px) {
       width: 45px;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+      width: 36px;
+      margin-top: 15px;
     }
   }
 `;

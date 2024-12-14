@@ -1,5 +1,5 @@
 import { navSet } from "../../index.constants";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import Container from "./index.styled";
 import PropTypes from "prop-types";
 
