@@ -41,9 +41,9 @@ export const Container = styled.div`
   }
 
   li {
-    font-size: var(--heading-size-1);
-    line-height: var(--heading-line-1);
-    font-weight: var(--text-weight-1);
+    font-size: var(--heading-size-2);
+    line-height: var(--heading-line-2);
+    font-weight: var(--text-weight-2);
     padding: 10px;
 
     @media (max-width: 1100px) {

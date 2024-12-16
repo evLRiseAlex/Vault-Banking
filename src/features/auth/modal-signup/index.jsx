@@ -14,11 +14,18 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  updateProfile,
 } from "firebase/auth";
 
 const ModalSignUp = () => {
   const { openDialogue, closeDialogue } = useDialogue();
   const auth = getAuth();
+
+  const generateRandomExpiry = () => {
+    const month = String(Math.floor(Math.random() * 12) + 1).padStart(2, "0");
+    const year = String(Math.floor(24 + Math.random() * 10));
+    return `${month}/${year}`;
+  };
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -26,6 +33,8 @@ const ModalSignUp = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     const confirmPassword = e.target["confirm-password"].value;
+    const firstName = e.target["first-name"].value;
+    const lastName = e.target["last-name"].value;
 
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
@@ -40,26 +49,35 @@ const ModalSignUp = () => {
       );
       const user = userCredential.user;
 
+      // Update user's displayName in Firebase Auth
+      await updateProfile(user, {
+        displayName: `${firstName} ${lastName}`,
+      });
+
+      console.log("User registered and displayName set:", user);
+
       console.log("User registered:", user);
 
       // Now safely build userData after user creation
       const userData = {
         email: user.email,
+        displayName: user.displayName,
         cards: [
           {
             cardNumber: Array(4)
               .fill(0)
               .map(() => Math.floor(1000 + Math.random() * 9000))
               .join(" "),
-            cardExpDate: "",
+            cardExpDate: generateRandomExpiry(),
             cardName: `${user.displayName || "User"}`, // Fallback to displayName
             CCV: Math.floor(100 + Math.random() * 900),
+            movements: [],
           },
         ],
         createdAt: new Date().toISOString(),
         fullName: {
-          firstName: "", // Use defaults as needed
-          lastName: "",
+          firstName: firstName, // Use defaults as needed
+          lastName: lastName,
         },
       };
 

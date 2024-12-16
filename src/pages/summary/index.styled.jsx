@@ -9,6 +9,22 @@ export const Container = styled.div`
   gap: 40px;
   margin-top: 150px;
 
+  .fade-in-out {
+    animation: fadeInOut 1.5s ease-out infinite;
+  }
+
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
   .greeting {
     align-self: flex-start;
     padding-left: 40px;

@@ -121,7 +121,7 @@ const Header = () => {
                 Log In
               </Button>
               <Button
-                type="button"
+                display="none"
                 variant="fill"
                 onClick={() => openDialogue("signup")}
               >
@@ -160,6 +160,11 @@ const Header = () => {
                     .then(() => {
                       // Sign-out successful.
                       setIsArrowClicked((prev) => !prev);
+                      navigate("/");
+                      window.scrollTo({
+                        top: 0,
+                        behavior: "smooth",
+                      });
                     })
                     .catch((error) => {
                       // An error happened.

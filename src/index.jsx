@@ -40,6 +40,7 @@ createRoot(document.getElementById("root")).render(
       <Route path="/terms" element={<ToS />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/summary" element={<Summary />} />
+      <Route path="/account" element={<></>} />
     </Routes>
     <Footer />
   </BrowserRouter>
