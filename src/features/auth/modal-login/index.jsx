@@ -3,12 +3,42 @@ import Container from "./index.styled";
 import EmailIcon from "../../../common/assets/mail-icon.svg?react";
 import PasswordIcon from "../../../common/assets/password.svg?react";
 import { useDialogue } from "../../../common/components/header";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router";
 
 const ModalLogIn = () => {
-  const { openDialogue } = useDialogue();
+  const { openDialogue, closeDialogue } = useDialogue();
+  const navigate = useNavigate();
+  const auth = getAuth();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log("User logged in:", user);
+        closeDialogue();
+        navigate("/summary");
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+        // ...
+      })
+      .catch((error) => {
+        console.error("Error logging user:", error);
+        alert(error.message); // Display error message to user
+      });
+  };
+
   return (
     <Modal>
-      <Container>
+      <Container onSubmit={handleLogin}>
         <h2>Please Log In to continue</h2>
         <span className="container__section">
           <label htmlFor="email">Email</label>

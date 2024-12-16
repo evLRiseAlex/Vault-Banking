@@ -15,7 +15,13 @@ const Container = styled.form`
   .container__section {
     display: flex;
     flex-direction: column;
-    flex: 1 1;
+  }
+
+  .container__name {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 20px; /* Adds space between the two fields */
   }
 
   .container__input {

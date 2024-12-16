@@ -9,14 +9,14 @@ const Button = (props) => {
       onClick={props.onClick}
       {...props}
     >
-      {props.children}{" "}
+      {props.children}
     </Container>
   );
 };
 
 Button.propTypes = {
   onClick: PropTypes.func,
-  children: PropTypes.element,
+  children: PropTypes.string,
   variant: PropTypes.oneOf(["fill", "outline"]),
   display: PropTypes.oneOf(["none", "flex"]),
   type: PropTypes.oneOf(["button", "submit"]),

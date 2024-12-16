@@ -13,10 +13,58 @@ export const HeaderContainer = styled.header`
   right: 0;
   z-index: 1000;
   padding: 40px;
-  width: 100vw;
+  width: 100%;
+
+  .greeting {
+    font-size: var(--heading-size-2);
+    line-height: var(--heading-line-2);
+    font-weight: var(--text-weight-2);
+
+    @media (max-width: 900px) {
+      display: none;
+    }
+  }
+
+  .user {
+    width: 50px;
+    height: 100%;
+
+    @media (max-width: 768px) {
+      width: 40px;
+    }
+  }
+
+  .user-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .icon-divider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid #c9c9c9;
+    padding: 0px 6px;
+    border-radius: 10px;
+
+    @media (max-width: 600px) {
+      gap: 5px;
+      padding: 0px 4px;
+      border-radius: 8px;
+    }
+  }
 
   ${({ isScrolled }) =>
     isScrolled &&
+    css`
+      background-color: var(--color-secondary--dark--alpha);
+    `}
+
+  ${({ isArrowClicked }) =>
+    isArrowClicked &&
     css`
       background-color: var(--color-secondary--dark--alpha);
     `}
@@ -81,7 +129,7 @@ export const NavLinksContainer = styled.nav`
   @media (max-width: 768px) {
     visibility: hidden;
     position: absolute;
-    top: 94px;
+    top: 90px;
     left: 0;
     opacity: 0;
     padding: 20px;

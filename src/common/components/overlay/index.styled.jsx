@@ -8,7 +8,7 @@ const Container = styled.div`
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(4px);
-  z-index: 1001;
+  z-index: 1101;
   transition: all 0.5s;
   ${({ isHidden }) =>
     isHidden &&

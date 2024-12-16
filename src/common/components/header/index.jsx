@@ -7,9 +7,19 @@ import {
   NavLeft,
   ButtonContainer,
 } from "./index.styled";
-import { Button, LogoWithText, Nav, Logo, Overlay } from "../../../common";
+import {
+  Button,
+  LogoWithText,
+  Nav,
+  Logo,
+  Overlay,
+  ButtonDropDown,
+  UserDropDown,
+} from "../../../common";
 import { ModalLogIn, ModalSignUp } from "../../../features";
 import { useNavigate, useLocation } from "react-router";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import UserIcon from "../../assets/user-icon.svg?react";
 
 const DialogueContext = createContext();
 
@@ -18,8 +28,21 @@ export const useDialogue = () => {
 };
 
 const Header = () => {
+  const [user, setUser] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isArrowClicked, setIsArrowClicked] = useState(false);
+
+  const auth = getAuth();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser); // Update user state
+    });
+
+    // Cleanup the subscription when component unmounts
+    return () => unsubscribe();
+  }, []);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -45,6 +68,7 @@ const Header = () => {
 
       debounceTimer = setTimeout(() => {
         setIsScrolled(window.scrollY > 0);
+        console.log(isScrolled);
       }, 100);
     };
 
@@ -68,7 +92,11 @@ const Header = () => {
 
   return (
     <DialogueContext.Provider value={{ openDialogue, closeDialogue }}>
-      <HeaderContainer isScrolled={isScrolled} isMenuOpen={isMenuOpen}>
+      <HeaderContainer
+        isScrolled={isScrolled}
+        isMenuOpen={isMenuOpen}
+        isArrowClicked={isArrowClicked}
+      >
         <Hamburger isMenuOpen={isMenuOpen} onClick={toggleMenu}>
           <HamburgerLine />
           <HamburgerLine />
@@ -83,21 +111,65 @@ const Header = () => {
           </NavLinksContainer>
         </NavLeft>
         <ButtonContainer>
-          <Button
-            type="button"
-            variant="outline"
-            onClick={() => openDialogue("login")}
-          >
-            Log In
-          </Button>
-          <Button
-            type="button"
-            variant="fill"
-            display="none"
-            onClick={() => openDialogue("signup")}
-          >
-            Sign Up
-          </Button>
+          {!user ? (
+            <>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => openDialogue("login")}
+              >
+                Log In
+              </Button>
+              <Button
+                type="button"
+                variant="fill"
+                onClick={() => openDialogue("signup")}
+              >
+                Sign Up
+              </Button>
+            </>
+          ) : (
+            <>
+              <div className="user-info">
+                <span className="greeting">
+                  Welcome, {user.displayName || user.email}
+                </span>
+                <div className="icon-divider">
+                  <UserIcon className="user" />
+
+                  <ButtonDropDown
+                    isArrowClicked={isArrowClicked}
+                    onClick={() => {
+                      console.log(isArrowClicked);
+                      setIsArrowClicked((prev) => !prev);
+                    }}
+                    className="user-dropdown"
+                    type="button"
+                    // variant="outline"
+                    // onClick={() => {
+                    //   auth.signOut(); // Log out button
+                    // }}
+                  >
+                    ◀
+                  </ButtonDropDown>
+                </div>
+              </div>
+              <UserDropDown
+                onClick={() => {
+                  signOut(auth)
+                    .then(() => {
+                      // Sign-out successful.
+                      setIsArrowClicked((prev) => !prev);
+                    })
+                    .catch((error) => {
+                      // An error happened.
+                      console.log(error);
+                    });
+                }}
+                isArrowClicked={isArrowClicked}
+              />
+            </>
+          )}
         </ButtonContainer>
         {dialogueType === "login" && (
           <>

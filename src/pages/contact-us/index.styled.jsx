@@ -63,6 +63,15 @@ export const HelpContainer = styled.div`
     font-weight: var(--text-weight-1);
   }
 
+  a {
+    color: rgb(169, 106, 199);
+    cursor: pointer;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   @media (max-width: 1100px) {
     padding: 35px;
 

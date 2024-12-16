@@ -12,7 +12,7 @@ const Container = styled.div`
   /* border-radius: 25px; */
   padding: 20px 20px;
   box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.3);
-  z-index: 1002;
+  z-index: 1102;
   border-radius: 20px;
   transition: all 0.5s;
   display: flex;
