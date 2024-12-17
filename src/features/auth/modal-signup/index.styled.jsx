@@ -20,6 +20,7 @@ const Container = styled.form`
   .container__name {
     display: flex;
     flex-direction: row;
+    flex: 1 1;
     width: 100%;
     gap: 20px; /* Adds space between the two fields */
   }

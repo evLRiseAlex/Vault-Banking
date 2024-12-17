@@ -18,8 +18,9 @@ import {
 } from "../../../common";
 import { ModalLogIn, ModalSignUp } from "../../../features";
 import { useNavigate, useLocation } from "react-router";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import UserIcon from "../../assets/user-icon.svg?react";
+import API from "../../../API";
+import { toast } from "react-toastify";
 
 const DialogueContext = createContext();
 
@@ -33,19 +34,14 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isArrowClicked, setIsArrowClicked] = useState(false);
 
-  const auth = getAuth();
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser); // Update user state
-    });
-
-    // Cleanup the subscription when component unmounts
-    return () => unsubscribe();
-  }, []);
-
   const navigate = useNavigate();
   const location = useLocation();
+
+  const handleLogout = async () => {
+    API.user.logout();
+    await navigate("/");
+    toast("You have logged out successfully.", { type: "success" });
+  };
 
   const params = new URLSearchParams(location.search);
   const dialogueType = params.get("dialogue");
@@ -155,22 +151,7 @@ const Header = () => {
                 </div>
               </div>
               <UserDropDown
-                onClick={() => {
-                  signOut(auth)
-                    .then(() => {
-                      // Sign-out successful.
-                      setIsArrowClicked((prev) => !prev);
-                      navigate("/");
-                      window.scrollTo({
-                        top: 0,
-                        behavior: "smooth",
-                      });
-                    })
-                    .catch((error) => {
-                      // An error happened.
-                      console.log(error);
-                    });
-                }}
+                onClick={() => handleLogout()}
                 isArrowClicked={isArrowClicked}
               />
             </>
