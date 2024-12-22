@@ -25,6 +25,7 @@ const entity = {
         password: payload.password,
         returnSecureToken: true,
       });
+      console.log(response.data);
       return response.data; // {idToken: "...", refreshToken: "..."}
     } catch (error) {
       console.log("[API-ERROR]: Method: login | Message - ", error.toString());
@@ -33,6 +34,7 @@ const entity = {
   logout: () => {
     try {
       sessionStorage.removeItem("id_token");
+      sessionStorage.removeItem("userID");
     } catch (error) {
       console.log("[API-ERROR]: Method: logout | Message - ", error.toString());
     }

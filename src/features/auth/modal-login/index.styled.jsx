@@ -3,13 +3,21 @@ import styled from "styled-components";
 const Container = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 24px;
   color: var(--color-primary--dark);
 
   label {
     font-size: var(--text-size-1);
     line-height: var(--text-line-1);
     font-weight: var(--text-weight-1);
+  }
+
+  .error-message {
+    color: red;
+    font-size: var(--text-size-1);
+    line-height: var(--text-line-1);
+    font-weight: var(--text-weight-1);
+    margin-top: 10px;
   }
 
   .container__section {

@@ -9,10 +9,9 @@ function HomePage() {
         <div className="homeText">
           <h1>Banking Made Easy</h1>
           <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem,
-            blanditiis laborum dolore repudiandae alias ipsa natus dignissimos
-            debitis numquam. Dignissimos nostrum nobis excepturi quidem
-            veritatis aliquid sit iure, officia adipisci!
+            Experience seamless banking tailored to your needs. From managing
+            accounts to making payments, we bring simplicity and security to
+            your financial journey.
           </p>
           <button
             onClick={() => {

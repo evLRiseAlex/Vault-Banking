@@ -3,20 +3,21 @@ import PropTypes from "prop-types";
 
 const TextField = (props) => {
   return (
-    <Container isErrorVisible={props.isErrorVisible}>
-      <div>
-        {props.isIconVisible ? props.iconChildren : null}
-        <input
-          id={props.id}
-          name={props.name}
-          onChange={props.onChange}
-          onBlur={props.onBlur}
-          onFocus={props.onFocus}
-          value={props.value}
-          placeholder={props.placeholder}
-          {...props}
-        />
-        {props.isErrorVisible ? <p>{props.errorChildren}</p> : null}
+    <Container>
+      <div className="container-text">
+        <div>
+          {props.isIconVisible ? props.iconChildren : null}
+          <input
+            id={props.id}
+            name={props.name}
+            onChange={props.onChange}
+            onBlur={props.onBlur}
+            onFocus={props.onFocus}
+            value={props.value}
+            placeholder={props.placeholder}
+            {...props}
+          />
+        </div>
       </div>
     </Container>
   );

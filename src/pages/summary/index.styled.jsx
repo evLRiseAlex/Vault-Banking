@@ -7,7 +7,37 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   gap: 40px;
-  margin-top: 150px;
+  margin-top: 0px;
+
+  .currency-select {
+    display: flex;
+    gap: 10px;
+
+    label {
+      font-size: var(--text-size-1);
+    }
+  }
+
+  #currency {
+    background-color: var(--button-color-fill);
+    color: #c9c9c9;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: var(--text-size-2);
+
+    &:focus {
+      background-color: var(--button-color-fill);
+    }
+
+    option {
+      font-weight: 700;
+    }
+  }
+
+  .flex-movement {
+    display: flex;
+    gap: 20px;
+  }
 
   .fade-in-out {
     animation: fadeInOut 1.5s ease-out infinite;
@@ -26,8 +56,6 @@ export const Container = styled.div`
   }
 
   .greeting {
-    align-self: flex-start;
-    padding-left: 40px;
     font-size: var(--heading-size-1);
     line-height: var(--heading-line-1);
     font-weight: var(--heading-weight-1);

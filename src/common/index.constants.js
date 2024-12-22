@@ -29,7 +29,7 @@ export const homeFeaturesData = [
     iconPath: "/chartIcon.png",
     featureTitle: "Simple and Flexible ",
     featureText:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est saepe minima ipsum sed, alias voluptates tempora optio exercitationem fuga itaque ducimus quam eaque numquam in eligendi, nesciunt beatae, impedit ad.",
+      "Enjoy banking that's designed to fit your lifestyle with ease and adaptability, offering solutions that work for you, anytime, anywhere.",
   },
   {
     imagePathLowRes: "/FlowerLowRes.jpg",
@@ -37,7 +37,7 @@ export const homeFeaturesData = [
     iconPath: "moneyIcon.png",
     featureTitle: "Palpable Growth",
     featureText:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo accusantium, nulla molestias sapiente soluta repellendus pariatur numquam deleniti qui illum! Consectetur sit suscipit quasi. Dolores delectus libero eius inventore facilis.",
+      "Empowering you to take confident steps toward financial success with tools and support that make your growth tangible.",
   },
   {
     imagePathLowRes: "/PiggyLowRes.jpg",
@@ -45,7 +45,7 @@ export const homeFeaturesData = [
     iconPath: "piggyIcon.png",
     featureTitle: "High Savings Expectancy",
     featureText:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit unde nihil consectetur alias est mollitia libero sint enim maiores possimus repudiandae eligendi earum doloribus modi, fuga porro aliquid exercitationem similique.",
+      "Unlock the potential for greater savings with features designed to help you achieve and exceed your financial goals.",
   },
 ];
 

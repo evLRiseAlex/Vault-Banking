@@ -3,8 +3,16 @@ import styled from "styled-components";
 const Container = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 24px;
   color: var(--color-primary--dark);
+
+  .error-message {
+    color: red;
+    font-size: var(--text-size-1);
+    line-height: var(--text-line-1);
+    font-weight: var(--text-weight-1);
+    margin-top: 5px;
+  }
 
   label {
     font-size: var(--text-size-1);
@@ -15,12 +23,13 @@ const Container = styled.form`
   .container__section {
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
 
   .container__name {
     display: flex;
     flex-direction: row;
-    flex: 1 1;
+    justify-content: space-between;
     width: 100%;
     gap: 20px; /* Adds space between the two fields */
   }

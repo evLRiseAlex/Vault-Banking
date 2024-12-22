@@ -12,7 +12,7 @@ const UserDropDown = (props) => {
         </li>
         <StylingLine />
         <li>
-          <Link to="/account">My Account</Link>
+          <Link to="/account">Profile</Link>
         </li>
         <StylingLine />
         <li className="logout" onClick={props.onClick}>

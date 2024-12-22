@@ -6,24 +6,48 @@ import { StrictMode } from "react";
 
 import { FAQ, Contact, Home, ToS, Summary } from "./pages";
 
-import { Footer, Header } from "./common";
+import { Footer, Header, ProtectedRoute } from "./common";
+import { DialogueProvider } from "./common/components/header";
 
 import { ToastContainer } from "react-toastify";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/faq" element={<FAQ />} />
-        <Route path="/terms" element={<ToS />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/summary" element={<Summary />} />
-        <Route path="/account" element={<></>} />
-      </Routes>
-      <ToastContainer position="bottom-right" />
-      <Footer />
+      <DialogueProvider>
+        <Header />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Home />
+              </>
+            }
+          />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/terms" element={<ToS />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route
+            path="/summary"
+            element={
+              <ProtectedRoute>
+                <Summary />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/account"
+            element={
+              <ProtectedRoute>
+                <></>
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+        <ToastContainer position="bottom-right" />
+        <Footer />
+      </DialogueProvider>
     </BrowserRouter>
   </StrictMode>
 );
