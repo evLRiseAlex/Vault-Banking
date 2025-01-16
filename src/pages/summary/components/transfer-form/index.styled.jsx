@@ -22,6 +22,15 @@ const Container = styled.div`
     gap: 20px;
   }
 
+  .info {
+    margin-top: 10px;
+  }
+
+  .error {
+    color: red;
+    margin-top: 10px;
+  }
+
   div {
     .text-field {
       width: 100%;
@@ -46,9 +55,39 @@ const Container = styled.div`
     }
   }
 
+  margin-bottom: 40px;
+
   label {
     font-size: var(--text-size-1);
     margin-bottom: 5px;
+  }
+
+  @media (max-width: 1000px) {
+    width: 60vw;
+  }
+
+  @media (max-width: 800px) {
+    width: 80vw;
+    label {
+      font-size: var(--text-size-2);
+    }
+    #recipient,
+    #amount {
+      &::placeholder {
+        font-size: 16px;
+      }
+    }
+    button {
+      font-size: var(--text-size-2);
+    }
+  }
+
+  @media (max-width: 500px) {
+    width: 95vw;
+  }
+
+  @media (max-width: 375px) {
+    width: 95vw;
   }
 `;
 

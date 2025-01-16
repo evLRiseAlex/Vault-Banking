@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const Container = styled.form`
   display: flex;
@@ -12,6 +12,19 @@ const Container = styled.form`
     line-height: var(--text-line-1);
     font-weight: var(--text-weight-1);
     margin-top: 5px;
+  }
+
+  .summary-arrow {
+    transition: transform 0.3s ease;
+    border: none;
+    background: transparent;
+    color: var(--color-primary-dark);
+    cursor: pointer;
+    ${({ isSummaryArrowClicked }) =>
+      isSummaryArrowClicked &&
+      css`
+        transform: rotate(90deg);
+      `}
   }
 
   label {

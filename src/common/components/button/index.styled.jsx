@@ -15,6 +15,8 @@ const Container = styled.button`
         return "var(--button-color-fill)";
       case "outline":
         return "none";
+      case "delete":
+        return "red";
       default:
         return "outline";
     }

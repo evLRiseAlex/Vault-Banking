@@ -78,6 +78,23 @@ const entity = {
     }
   },
 
+  readCardByID: async (payload) => {
+    try {
+      const response = await axiosInstance.get("/cards.json");
+      const cards = response.data;
+      console.log(cards);
+
+      // Filter card by userID
+      const userCard = Object.values(cards).find(
+        (card) => card.userID === payload.userID
+      );
+
+      return userCard;
+    } catch (error) {
+      console.error("[API-ERROR]: Entity: Card | Method: readCardById", error);
+    }
+  },
+
   initializeMovements: async (payload) => {
     try {
       // Fetch the user's card using readCardById
@@ -144,12 +161,12 @@ const entity = {
 
       // Find the correct cardId using the user's cardNumber
       const cardId = Object.keys(allCards).find(
-        (key) => allCards[key].cardNumber === userCard.cardNumber
+        (key) => allCards[key].userID === userCard.userID
       );
 
       if (!cardId) {
         console.error("Card not found with the given cardNumber.");
-        return null;
+        return cardId;
       }
 
       // Update the card in the database
@@ -204,6 +221,40 @@ const entity = {
         "[API-ERROR]: Entity: Card | Method: updateMovements",
         error
       );
+      return null; // Return null on error
+    }
+  },
+
+  deleteCard: async (payload) => {
+    try {
+      // Fetch the user's card using readCardById
+      const userCard = await entity.readCardById({ userID: payload.userID });
+
+      if (!userCard) {
+        console.error("Card not found for the given userID.");
+        return null;
+      }
+
+      // Fetch all cards to get the cardId
+      const allCards = await entity.readAllCards();
+
+      // Find the correct cardId using the user's cardNumber
+      const cardId = Object.keys(allCards).find(
+        (key) => allCards[key].cardNumber === userCard.cardNumber
+      );
+
+      if (!cardId) {
+        console.error("Card not found with the given cardNumber.");
+        return null;
+      }
+
+      // Update the card in the database
+      await axiosInstance.delete(`/cards/${cardId}.json`);
+
+      console.log("Card deleted Successfully");
+      return null;
+    } catch (error) {
+      console.error("[API-ERROR]: Entity: Card | Method: deleteCard", error);
       return null; // Return null on error
     }
   },

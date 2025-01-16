@@ -4,6 +4,7 @@ const Container = styled.div`
   .container-text {
     display: flex;
     align-items: center;
+    justify-content: center;
     font-family: "Teko";
     height: 48px;
     border-radius: 8px;

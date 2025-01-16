@@ -84,6 +84,12 @@ export const DialogueProvider = ({ children }) => {
   );
 };
 
+const HeaderContext = createContext();
+
+export const useHeaderContext = () => {
+  return useContext(HeaderContext);
+};
+
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);

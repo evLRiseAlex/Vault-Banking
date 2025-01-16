@@ -155,7 +155,6 @@ const ModalSignUp = () => {
 
         await API.profile.create({
           email: form.email,
-          password: form.password,
           firstName: form.firstName,
           lastName: form.lastName,
           userID: newUser.localId,
@@ -164,7 +163,11 @@ const ModalSignUp = () => {
           userID: newUser.localId,
         });
 
-        toast("Your account has been created.", { type: "success" });
+        toast("Your account was successfully created.", { type: "success" });
+        const response = await API.user.sendEmailVerification({
+          idToken: newUser.idToken,
+        });
+        console.log(response.data);
         const loginRegistered = await API.user.login({
           email: form.email,
           password: form.password,

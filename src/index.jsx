@@ -4,7 +4,7 @@ import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router";
 import { StrictMode } from "react";
 
-import { FAQ, Contact, Home, ToS, Summary } from "./pages";
+import { FAQ, Contact, Home, ToS, Summary, Profile } from "./pages";
 
 import { Footer, Header, ProtectedRoute } from "./common";
 import { DialogueProvider } from "./common/components/header";
@@ -37,10 +37,10 @@ createRoot(document.getElementById("root")).render(
             }
           />
           <Route
-            path="/account"
+            path="/profile"
             element={
               <ProtectedRoute>
-                <></>
+                <Profile></Profile>
               </ProtectedRoute>
             }
           />
