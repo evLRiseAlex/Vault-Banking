@@ -1,8 +1,21 @@
-# React + Vite
+# Vault Banking 💰
+Vault Banking is a modern and secure banking web application built with React, Vite, and Firebase Authentication. It provides users with a seamless experience for managing their accounts, making transfers, and handling currency conversions effortlessly.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## ✨ Features
 
-Currently, two official plugins are available:
+### 🔒 Secure Authentication – Firebase Authentication with email verification.
+### 💸 Account Transfers – Users can transfer money between accounts.
+### 🌎 Automatic Currency Conversion – State-managed real-time conversion based on transaction input.
+### 🏠 Dynamic Home Page – Lazy-loaded images for a smoother user experience.
+### 📍 Interactive Contact Page – Built with Leaflet for location-based interactions.
+### 📖 Informative About & FAQ Sections – Clear presentation of essential details.
+### 🎨 Fully Responsive Design – Works flawlessly across all screen sizes.
+### ✏️ User Profile Management – Edit display name and other details.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tech Stack
+
+### React & Vite – Fast and efficient front-end development.
+### Styled Components – Modern CSS-in-JS for easy styling.
+### Firebase – Secure authentication and email verification.
+### Axios – Efficient API requests.
+### Leaflet – Interactive maps for the contact page.
